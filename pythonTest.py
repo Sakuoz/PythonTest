@@ -17,6 +17,7 @@ print 'my weight is %s kg.' % my_weight
 print 'my weight is %d kg and my name is %s' % (my_weight, my_name)
 print '1' * 10
 print a + n + g + e + l
+print 'hello world!'
 
 # 变量名要以字母开头
 # round()函数可以使浮点数四舍五入
