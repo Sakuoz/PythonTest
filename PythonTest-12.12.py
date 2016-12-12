@@ -10,3 +10,4 @@ else:
     print -a
 
 print 'yes'
+print '123'
