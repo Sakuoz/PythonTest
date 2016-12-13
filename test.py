@@ -38,3 +38,15 @@ print classmates
 # list是一个有序的集合,变量classmates就是一个list,list是一个可变的有序表,所以可以在list末尾追加元素
 # len()函数可以获得list元素的个数
 # 索引是从0开始,索引-1可以直接获取最后一个元素
+
+
+print len(classmates) # 3
+print classmates[0]   # Mike
+print classmates[1]   # Sakura
+print classmates[-1]  # Mikasa
+print classmates[-2]  # Sakura
+print len(classmates) # 3
+print classmates[0]   # Mike
+print classmates[1]   # Sakura
+print classmates[-1]  # Mikasa
+print classmates[-2]  # Sakura
