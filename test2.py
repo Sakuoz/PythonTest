@@ -47,10 +47,12 @@ while n > 0:
     num = num + n
     n = n - 2
 print num
+# while循环,只要条件满足就会一直循环,当条件为False不满足时才会退出循环,上述代码利用while循环计算了100以内的奇数之和
 
-
-birth = int(raw_input('birth: '))
+birth = raw_input('birth: ')   # 输入1999
 if birth < 2000:
     print '00前'
 else:
-    print '00后'
+    print '00后'     # 结果为'00后'
+# raw_input()输入的内容是以字符串返回的,字符串无法和整数做比较,所以在上面的循环中判断的结果为False,输出else的内容
+# 可以使用int()把字符串转换为我们想要的类型: birth = int(raw_input('birth: '))
