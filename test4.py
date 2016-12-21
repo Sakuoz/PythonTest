@@ -75,5 +75,41 @@ def power(x, n = 2):
         n = n - 1
         s = s * x
     return s
-
+print power(2, 4)     # 16
 # 默认参数必须指向不变对象,可以用None这个不变对象实现
+
+# 可变参数
+
+# 可变参数允许传入0个或任意个数参数,这些可变参数在函数调用时自动组装成一个tuple
+# 定义可变参数和定义list或tuple参数想必,仅仅在参数前面加一个 * 号
+# 利用下述函数可以求出a²+b²+c²+....的值,numbers传入的是一个list或者tuple
+def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+print calc(1, 2, 3)    # 1*1 + 2*2 +3*3 = 14
+
+# 如果已经有一个list或tuple,要调用可变参数可以在list或tuple前加 * 号
+nums = [1, 2, 3]
+print calc(*nums)      # 14
+
+# 关键字参数
+
+# 关键参数允许传入0个或任意个含有参数名的参数,这些关键字参数在函数内部自动组装成一个dict
+# 在函数person中name,age为必选参数,kw为关键字参数,可以只传入必选参数,也可以传入任意个数的关键字参数
+def person(name, age, **kw):
+    print 'name:', name, 'age:', age, 'other:', kw
+print person('Sakura', 20)       # name: Sakura age: 20 other: {}
+print person('Sakura', 20, city = 'Xiangyang', job = 'Engineer')
+# name: Sakura age: 20 other: {'city': 'Xiangyang', 'job': 'Engineer'}
+
+# 关键字参数可以和可变参数一样,先组装一个dict,然后把该dict转换为关键字参数传进去
+kw = {'city': 'Xiangyang', 'job': 'Engineer'}
+print person('Mikasa', 20, **kw)
+
+# 参数组合
+
+# 在Python中定义函数,参数定义的顺序必须是: 必选参数,默认参数,可变参数,关键字参数
+# 对于任意函数，都可以通过类似func(*args, **kw)的形式调用它，无论它的参数是如何定义的
+# 默认参数一定要用不可变对象 ,如果是可变对象,运行会有逻辑错误
