@@ -48,3 +48,42 @@ print isinstance(123, Iterable)          # False
 # enumerate()函数可以把一个list变成索引-元素对,这样可以在for循环中同时迭代索引和元素本身
 for i, value in enumerate(['A', 'B', 'C']):
     print i, value    # 0 A   1 B   2 C
+
+## 列表生成式
+
+# 生成1-10的list
+print range(1, 11)     # [1, 2, 3, ....., 9, 10]
+# 生成[1*1, 2*2, 3*3, ...., 9*9, 10*10]的list
+# 写列表生成式时,把要生成的元素x*x放在前面,后面跟for循环就可以创建list
+print [x * x for x in range(1, 11)]     # [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+# for循环后面还可以加上if判断,下述代码利用if判断筛选出仅偶数的平方
+print [x * x for x in range(1, 11) if x % 2 == 0]     # [4, 16, 36, 64, 100]
+# 使用两层循环生成全排列
+print [m + n for m in 'ABC' for n in 'XYZ']   # ['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
+# 列出当前目录下的所有文件和目录名
+# ['.git', '.idea', 'README.md', 'test.py', 'test2.py', 'test3.py', 'test4.py', 'test5.py']
+import os     # 导入os模块
+print [d for d in os.listdir('.')]    # os.listdir可以累出文件和目录
+# 列表生成式可以使用两个变量来生成list
+j = {'x': 'A', 'y': 'B', 'z': 'C'}
+print [k + '=' + v for k, v in j.iteritems()]    # ['y=B', 'x=A', 'z=C']
+# 把list中所有的字符串变成小写
+J1 = ['SAKURA', 'ASUNA', 'MIKASA']
+print [s.lower() for s in J1]      # ['sakura', 'asuna', 'mikasa']
+# 当list中包含字符串和整数时,需要通过if判断
+J2 = ['SAKURA', 'ASUNA', 18, 'MIKASA']
+print [s.lower() for s in J2 if isinstance(s, str) == True ]  # ['sakura', 'asuna', 'mikasa']
+# 如果需要保留数字
+print [s.lower() if isinstance(s, str) else s for s in J2]
+
+## 生成器
+# 创建一个生成器(generator),最简单的只需要把列表生成式的[]改成()
+g = (x * x for x in range(1, 11))
+print g       # <generator object <genexpr> at 0x025550A8>
+# generator的next()方法可以一个一个的打印generator内的元素
+print g.next()     # 1
+print g.next()     # 4
+print g.next()     # 9
+# 因为generator是可迭代对象,所以可以通过for循环直接调用
+for n in g:
+    print n
