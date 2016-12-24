@@ -87,3 +87,6 @@ print g.next()     # 9
 # 因为generator是可迭代对象,所以可以通过for循环直接调用
 for n in g:
     print n
+#
+
+     
